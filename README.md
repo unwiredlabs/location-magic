@@ -22,8 +22,8 @@ A simple way to track *unix devices
 		# Paste this there after replacing $platform with osx / linux and $token with your Location Magic token
 		0 * * * * cd /usr/local/bin/ && ./locationmagic.sh -locate $platform $token
 * Run it the first time manually
-
-    $ cd /usr/local/bin/ && ./locationmagic.sh -locate $platform $token
+* 
+         $ cd /usr/local/bin/ && ./locationmagic.sh -locate $platform $token
 
 * If all is well, you should be able to locate your device here: https://locationmagic.org/locate
 
