@@ -1,12 +1,12 @@
 # Location Magic
-A simple way to track *unix devices
+A simple way to track *nix devices
 
 ### How Location Magic locates your device
 * Scripts in this repo, when run on your device, search for nearby WiFi access points and send us their BSSIDs (physical address)
 * We then send this data to Unwired Labs' LocationAPI (https://unwiredlabs.com), a WiFi positioning service
 * We plot the location Unwired Labs returns on a map, here: https://locationmagic.org/locate
 
-### Installation Instructions for *unix devices
+### Installation Instructions for *nix devices
 * Get a token from the Location Magic website
 * Download the `locationmagic.sh` script from this repo
 * Copy it to `/usr/local/bin` directory
