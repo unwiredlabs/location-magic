@@ -2,13 +2,16 @@
 
 ##############################################################
 # Powered-By: Unwired Labs                                   #
-# Version 1.1                                                #
+# Version 1.2                                                #
 # run as ./locationmagic.sh -locate [PLATFORM] [TOKEN]       #
 ##############################################################
 
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
 set -e
 
-version=1.1
+version=1.2
+
 echo "Welcome to LocationMagic " + $version + "
 ...a simple way to track your *nix device.
 
@@ -73,8 +76,8 @@ then
 	if [ "$platform" = "osx" ]; then
 		list=($(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s |  egrep -o '([a-f0-9]{2}:){5}[a-f0-9]{2}'))
 	elif [ "$platform" = "linux" ]; then
-		interface=($(/sbin/ifconfig | grep wlan | awk '{print $1}'))
-		list=($(/sbin/iwlist "$interface" scanning | grep Address | awk '{print $5}'))
+		interface=($(ifconfig | grep wlan | awk '{print $1}'))
+		list=($(iwlist "$interface" scanning | grep Address | awk '{print $5}'))
 	else
 		echo "Invalid platform / OS selected.. Proceeding with IP address based location"
 		list[0]=""
