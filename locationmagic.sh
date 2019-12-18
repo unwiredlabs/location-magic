@@ -77,6 +77,9 @@ then
 		list=($(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s |  egrep -o '([a-f0-9]{2}:){5}[a-f0-9]{2}'))
 	elif [ "$platform" = "linux" ]; then
 		interface=($(ifconfig | grep wlan | awk '{print $1}'))
+		if [ "${interface:-none}"  == "none" ]; then
+			interface=($(iw dev | grep "Interface" | awk '{print $2}'))
+		fi
 		list=($(iwlist "$interface" scanning | grep Address | awk '{print $5}'))
 	else
 		echo "Invalid platform / OS selected.. Proceeding with IP address based location"
